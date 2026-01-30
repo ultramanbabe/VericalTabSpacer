@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>━━━━━━━━━━━━━━━━━━━━</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect y=%2235%22 width=%22100%22 height=%2230%22 fill=%22%23666%22/></svg>">
+
+    <style>
+        body {
+            background-color: #121212;
+            /* Very dark grey, almost black */
+            color: #666;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 400px;
+        }
+
+        .preview {
+            font-size: 1.5rem;
+            color: #888;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        input {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            color: #eee;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #555;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .presets {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .preset-btn {
+            background: #2a2a2a;
+            border: none;
+            color: #aaa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .preset-btn:hover {
+            background: #3a3a3a;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <p><strong>Spacer Tab</strong><br>Keep this tab open to create a visual break in your vertical tabs.</p>
+        </div>
+
+        <input type="text" id="titleInput" value="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            placeholder="Type to change tab title...">
+
+        <div class="presets">
+            <button class="preset-btn" onclick="setSpacer('========================================', 'medium')">Thick
+                Line</button>
+            <button class="preset-btn" onclick="setSpacer('————————————————————————————————————————', 'thin')">Thin
+                Line</button>
+            <button class="preset-btn" onclick="setSpacer('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬', 'thick')">Block
+                Line</button>
+            <button class="preset-btn" onclick="setSpacer('                    ', 'transparent')">Empty</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const titleInput = document.getElementById('titleInput');
+
+        function setSpacer(title, iconType) {
+            document.title = title;
+            titleInput.value = title;
+            setIcon(iconType);
+        }
+
+        titleInput.addEventListener('input', (e) => {
+            document.title = e.target.value;
+        });
+
+        function setIcon(type) {
+            let svg;
+            if (type === 'thin') {
+                svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect y="45" width="100" height="10" fill="%23666"/></svg>';
+            } else if (type === 'medium') {
+                svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect y="35" width="100" height="30" fill="%23666"/></svg>';
+            } else if (type === 'thick') {
+                svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect y="20" width="100" height="60" fill="%23666"/></svg>';
+            } else {
+                svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"/>';
+            }
+
+            const link = document.querySelector("link[rel*='icon']");
+            if (link) {
+                link.href = 'data:image/svg+xml,' + svg;
+            }
+        }
+    </script>
+</body>
+
+</html>
