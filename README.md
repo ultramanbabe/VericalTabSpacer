@@ -1,1 +1,1 @@
-!(/image/TabSpacer_example.jpeg)
+![example image](/image/TabSpacer_example.jpeg)
