@@ -1,1 +1,1 @@
-![TabSpacer_example](TabSpace_example.jpeg)
+![TabSpacer_example](VerticalTabSpacer/TabSpacer_example.jpeg)
