@@ -93,7 +93,7 @@
         </div>
 
         <input type="text" id="titleInput" value="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            placeholder="Type to change tab title...">
+            placeholder="Type to change tab title..." autofocus>
 
         <div class="presets">
             <button class="preset-btn" onclick="setSpacer('================================================================================', 'medium')">Thick
@@ -118,6 +118,12 @@
 
         titleInput.addEventListener('input', (e) => {
             document.title = e.target.value;
+        });
+
+        // Focus the textbox automatically when the tab is opened so you can edit right away.
+        window.addEventListener('load', () => {
+            titleInput.focus();
+            titleInput.select();
         });
 
         function setIcon(type) {
