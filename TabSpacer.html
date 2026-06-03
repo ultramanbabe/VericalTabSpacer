@@ -123,7 +123,7 @@
         // Focus the textbox automatically when the tab is opened so you can edit right away.
         window.addEventListener('load', () => {
             titleInput.focus();
-            titleInput.select();
+            titleInput.setSelectionRange(0, 0);
         });
 
         function setIcon(type) {
