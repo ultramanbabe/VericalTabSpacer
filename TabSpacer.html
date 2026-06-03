@@ -122,6 +122,9 @@
 
         // Focus the textbox automatically when the tab is opened so you can edit right away.
         window.addEventListener('load', () => {
+            // Add a space after the cursor, then place the caret at the start (before the space).
+            titleInput.value = ' ' + titleInput.value;
+            document.title = titleInput.value;
             titleInput.focus();
             titleInput.setSelectionRange(0, 0);
         });
