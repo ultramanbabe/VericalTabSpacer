@@ -92,8 +92,8 @@
             <p><strong>Spacer Tab</strong><br>Keep this tab open to create a visual break in your vertical tabs.</p>
         </div>
 
-        <input type="text" id="titleInput" value="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            placeholder="Type to change tab title..." autofocus>
+        <input type="text" id="titleInput" value=" ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            placeholder="Type to change tab title..." autofocus autocomplete="off">
 
         <div class="presets">
             <button class="preset-btn" onclick="setSpacer('================================================================================', 'medium')">Thick
@@ -121,9 +121,9 @@
         });
 
         // Focus the textbox automatically when the tab is opened so you can edit right away.
-        window.addEventListener('load', () => {
-            // Add a space after the cursor, then place the caret at the start (before the space).
-            titleInput.value = ' ' + titleInput.value;
+        // Use pageshow so it also runs on back/forward cache restores, and keep the
+        // value's leading space (a space sits just after the cursor at the start).
+        window.addEventListener('pageshow', () => {
             document.title = titleInput.value;
             titleInput.focus();
             titleInput.setSelectionRange(0, 0);
