@@ -83,6 +83,28 @@
             background: #3a3a3a;
             color: #fff;
         }
+
+        .new-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .new-tab-btn {
+            background: #1e3a2a;
+            border: none;
+            color: #9ad6b0;
+            padding: 16px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .new-tab-btn:hover {
+            background: #275139;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -104,11 +126,29 @@
                 Line</button>
             <button class="preset-btn" onclick="setSpacer('                    ', 'transparent')">Empty</button>
         </div>
+
+        <div class="new-tabs">
+            <button class="new-tab-btn" onclick="openSpacerBelow()">+ New Spacer Below</button>
+            <button class="new-tab-btn" onclick="openBlankBelow()">+ New Blank Tab</button>
+        </div>
     </div>
     </div>
 
     <script>
         const titleInput = document.getElementById('titleInput');
+
+        // Open another copy of this spacer page. Tabs opened from JS land right
+        // next to the current tab, so the new spacer appears just below this one.
+        function openSpacerBelow() {
+            const win = window.open(window.location.href, '_blank');
+            if (win) win.focus();
+        }
+
+        // Open a fresh blank tab just below this one and switch to it.
+        function openBlankBelow() {
+            const win = window.open('about:blank', '_blank');
+            if (win) win.focus();
+        }
 
         function setSpacer(title, iconType) {
             document.title = title;
